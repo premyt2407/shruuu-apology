@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script src="sorry.js"></script> 
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I'm Sorry, Shruti 💛</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      height: 100%;
+      width: 100%;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+      overflow: hidden;
+      color: #fff;
+    }
+    .hearts {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .heart {
+      position: absolute;
+      width: 20px; height: 20px;
+      background: #ff6f91;
+      transform: rotate(45deg);
+      animation: float 8s linear infinite;
+    }
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      background: #ff6f91;
+      border-radius: 50%;
+    }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { top: 0; left: -10px; }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+    }
+
+    .container {
+      z-index: 1;
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    p {
+      max-width: 600px;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+    button {
+      background: #fff;
+      color: #f76c6c;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    button:hover {
+      background: #ffe1e9;
+      transform: scale(1.05);
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      color: #f76c6c;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      z-index: 10;
+      width: 80%;
+      max-width: 400px;
+    }
+    .popup h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+    .popup p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+    .popup button {
+      background: #f76c6c;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Hearts -->
+  <div class="hearts" id="hearts"></div>
+
+  <!-- Apology Content -->
+  <div class="container">
+    <h1>I'm Sorry, SHRUU 💛</h1>
+    <p>
+      Shruti, I never meant to hurt you. I realize and YOU also know how much you truly mean to me.
+      You’re one of the kindest, most beautiful souls I know. Please forgive me for letting you down.
+      I promise to be more thoughtful, more present, and the kind of friend you deserve.
+    </p>
+    <button onclick="showPopup()">Forgive Me?</button>
+  </div>
+
+  <!-- Apology Popup -->
+  <div class="popup" id="popup">
+    <h2>Thank You, Shruti 💕</h2>
+    <p>You're truly special to me. Let's start again, stronger and kinder.</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Scripts -->
+  <script>
+    let musicStarted = false;
+
+    function showPopup() {
+      document.getElementById('popup').style.display = 'block';
+
+      if (!musicStarted) {
+        const audio = document.getElementById('bgMusic');
+        audio.volume = 0.3;
+        audio.play();
+        musicStarted = true;
+      }
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    // Heart animation
+    const heartsContainer = document.getElementById('hearts');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = '-' + (Math.random() * 100 + 20) + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
